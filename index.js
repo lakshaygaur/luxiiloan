@@ -11,4 +11,10 @@ app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => res.render('pages/send'))
 
+app.post('/',function(req,res){
+
+
+    return  res.render("pages/banksuggest.ejs")
+})
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

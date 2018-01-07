@@ -28,14 +28,7 @@
                     <input type="text" name="inc" class="form-control" placeholder="">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <div class="col-md-2">
-                    <label class="form-control-label">Property </label>
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" name="s_fee" class="form-control" placeholder="">
-                  </div>
-                </div>
+                
                 <div class="form-group row">
                   <div class="col-md-2">
                     <label class="form-control-label">Email-ID </label>
@@ -50,6 +43,25 @@
                     </div>
                     <div class="col-md-4">
                       <input type="text" name="s_fee" class="form-control" placeholder="+91" maxlength="10">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="form-control-label">Property </label>
+                    </div>
+                    
+                      <!--<input type="text" name="s_fee" class="form-control" placeholder="">-->
+                      <select id="property" onchange="myFunction()"> <option value="Not Identified">Not Identified</option>
+                        <option value="2">Identified</option>
+                        
+                     </select>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-2">
+                      <label class="form-control-label">Property Detail </label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" name="s_fee" id="propdetail" class="form-control" placeholder="" disabled="true">
                     </div>
                   </div>
                 <div class="form-actions">
@@ -68,5 +80,19 @@
   <!-- End Page Scripts --> 
 </section>
 
-</script>
+<script>
+  function myFunction() {
+    if(document.getElementById("property").value == "Identified")
+      document.getElementById("propdetail").disabled = false ;
+  }
+
+  document.getElementById('property').addEventListener('change', function() {
+    if (this.value == 2) {
+        document.getElementById('propdetail').disabled = false;
+    } else {
+        document.getElementById('propdetail').disabled = true;
+    }
+});
+  </script>
+  
 <%-include('footer')%>
