@@ -14,7 +14,7 @@ var sendEmail = function(lead){
             port:587,
             auth: {
                 user: 'apikey',
-                pass: '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'
+                pass: 'jlkdajs'
             }
           });
           //console.log('sending mail')
