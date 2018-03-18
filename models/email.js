@@ -1,26 +1,27 @@
 const nodemailer = require('nodemailer');
 const async = require('async');
+const config = require('../config/config')
 
 
 var sendEmail = function(lead){
     
-        nodemailer.createTestAccount((err, account) => {
-          if(err){
-            console.log('email.js | error creating test account | err',err)
-            return 
-          } 
+        // nodemailer.createTestAccount((err, account) => {
+        //   if(err){
+        //     console.log('email.js | error creating test account | err',err)
+        //     return 
+        //   } 
             var smtpTransport =nodemailer.createTransport({
             host: 'smtp.sendgrid.net',
             port:587,
             auth: {
                 user: 'apikey',
-                pass: 'jlkdajs'
+                pass: config.emailpass
             }
           });
           //console.log('sending mail')
-          //console.log(email)
+          console.log(config)
             var mailOptions = {
-              to: "krmohit1984@gmail.com", //krmohit1984@gmail.com
+              to: "krmohit1984@gmail.com,kr_sho111@yahoo.co.in", //krmohit1984@gmail.com
               from: '"LeLoLoan.com" <no-reply@LeLoLoan.com>',
               subject: 'New Lead',
               text: "heloo",
@@ -28,7 +29,7 @@ var sendEmail = function(lead){
             };
             smtpTransport.sendMail(mailOptions, function(err,info) {
               if (err) {
-                console.log('email.js | error Sending email to '+ email+' | err')
+                console.log('email.js | error Sending email to '+ lead.email+' | err')
                 console.log(err)
                   return err
               }
@@ -36,7 +37,7 @@ var sendEmail = function(lead){
               // Preview only available when sending through an Ethereal account
               //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
             })
-        })
+        // })
     }
     
     exports.sendEmail = sendEmail
